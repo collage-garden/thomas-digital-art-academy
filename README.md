@@ -18,6 +18,10 @@ This is not a course platform. This is a living, versioned record of learning: r
 
 **AI Partner** — co-creator from day one, transparently labeled per our [Charter](CHARTER.md).
 
+## What's Growing
+
+🎧 **[Binaural Beats Explorer](https://collage-garden.github.io/binaural-beats/)** — the garden's first work. An interactive tool that lets you hear a beat your brain invents from two slightly different frequencies — and then shows you how the same sound feels completely different when wrapped in science, marketing, or mysticism. Crosses four paths: Auditory Art, Interactive Installation, Social Observation, Everyday Life. ([Story](stories/thomas/#chapter-2) · [Work details](works/))
+
 ## How This Garden Is Organized
 
 Content grows along six intersecting paths:
