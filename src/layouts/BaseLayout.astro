@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Thomas's Digital Art Academy — The Collage Garden" } = Astro.props;
+---
+
+<!doctype html>
+<html lang={Astro.currentLocale || 'en'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | The Collage Garden</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="logo">🌿 The Collage Garden</a>
+        <div class="nav-links">
+          <a href="/scenes/">Scenes</a>
+          <a href="/stories/">Stories</a>
+          <a href="/knowledge/">Knowledge</a>
+          <a href="/works/">Works</a>
+          <a href="/courses/">Courses</a>
+          <a href="/charter/">Charter</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <p>
+        Thomas's Digital Art Academy · The Collage Garden<br />
+        Content: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> ·
+        Code: <a href="https://opensource.org/licenses/MIT">MIT</a>
+      </p>
+    </footer>
+  </body>
+</html>

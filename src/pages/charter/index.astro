@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Read and render the charter markdown
+const charterFile = await import('../../../CHARTER.md?raw');
+---
+
+<BaseLayout title="Charter" description="The constitution of Thomas's Digital Art Academy">
+  <article set:html={charterFile.default} />
+</BaseLayout>
