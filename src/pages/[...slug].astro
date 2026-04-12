@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { marked } from 'marked';
+import fs from 'node:fs';
+import path from 'node:path';
+
+export function getStaticPaths() {
+  const pages = [
+    { slug: undefined, file: 'README.md', title: 'Home' },
+    { slug: 'charter', file: 'CHARTER.md', title: 'Charter' },
+    { slug: 'scenes', file: 'scenes/README.md', title: 'Scenes' },
+    { slug: 'scenes/everyday-life', file: 'scenes/everyday-life/README.md', title: 'Everyday Life' },
+    { slug: 'scenes/social-observation', file: 'scenes/social-observation/README.md', title: 'Social Observation' },
+    { slug: 'scenes/auditory-art', file: 'scenes/auditory-art/README.md', title: 'Auditory Art' },
+    { slug: 'scenes/visual-art', file: 'scenes/visual-art/README.md', title: 'Visual Art' },
+    { slug: 'scenes/interactive-installation', file: 'scenes/interactive-installation/README.md', title: 'Interactive Installation' },
+    { slug: 'scenes/traditional-art', file: 'scenes/traditional-art/README.md', title: 'Traditional Art' },
+    { slug: 'stories', file: 'stories/README.md', title: 'Stories' },
+    { slug: 'stories/thomas', file: 'stories/thomas/README.md', title: 'Story: Thomas' },
+    { slug: 'knowledge', file: 'knowledge/README.md', title: 'Knowledge' },
+    { slug: 'works', file: 'works/README.md', title: 'Works' },
+    { slug: 'courses', file: 'courses/README.md', title: 'Courses' },
+  ];
+  return pages.map(({ slug, file, title }) => ({
+    params: { slug },
+    props: { file, title },
+  }));
+}
+
+const { file, title } = Astro.props;
+const raw = fs.readFileSync(path.resolve(file), 'utf-8');
+let html = await marked(raw);
+
+// Rewrite CHARTER .md links to web-friendly paths
+html = html.replace(/href="([^"]*?)CHARTER\.md"/g, 'href="$1charter/"');
+html = html.replace(/href="([^"]*?)CHARTER-ZH\.md"/g, 'href="$1charter/"');
+---
+
+<BaseLayout title={title}>
+  <article set:html={html} />
+</BaseLayout>
