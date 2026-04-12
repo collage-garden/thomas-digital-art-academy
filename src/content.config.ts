@@ -1,6 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 
-const scenes = ['everyday-life', 'auditory-art', 'visual-art', 'social-observation'] as const;
+const scenes = ['everyday-life', 'social-observation', 'auditory-art', 'visual-art', 'interactive-installation', 'traditional-art'] as const;
 const disciplines = ['physics', 'mathematics', 'economics', 'philosophy', 'psychology', 'physiology', 'neuroscience'] as const;
 
 const stories = defineCollection({

@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { title, description = "Thomas's Digital Art Academy — The Collage Garden" } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <!doctype html>
@@ -15,20 +16,20 @@ const { title, description = "Thomas's Digital Art Academy — The Collage Garde
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <title>{title} | The Collage Garden</title>
   </head>
   <body>
     <header>
       <nav>
-        <a href="/" class="logo">🌿 The Collage Garden</a>
+        <a href={base} class="logo">🌿 The Collage Garden</a>
         <div class="nav-links">
-          <a href="/scenes/">Scenes</a>
-          <a href="/stories/">Stories</a>
-          <a href="/knowledge/">Knowledge</a>
-          <a href="/works/">Works</a>
-          <a href="/courses/">Courses</a>
-          <a href="/charter/">Charter</a>
+          <a href={`${base}scenes/`}>Scenes</a>
+          <a href={`${base}stories/`}>Stories</a>
+          <a href={`${base}knowledge/`}>Knowledge</a>
+          <a href={`${base}works/`}>Works</a>
+          <a href={`${base}courses/`}>Courses</a>
+          <a href={`${base}charter/`}>Charter</a>
         </div>
       </nav>
     </header>

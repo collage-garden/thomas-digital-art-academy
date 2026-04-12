@@ -28,7 +28,7 @@ We argued about naming. "Collage" was the original instinct — pasting whatever
 
 We wrote a charter. We built a skeleton:
 
-- Four **scene paths**: Everyday Life, Auditory Art, Visual Art, Social Observation
+- Six **scene paths**: Everyday Life, Social Observation, Auditory Art, Visual Art, Interactive Installation, Traditional Art
 - A **knowledge shelf**: physics, math, economics, philosophy, psychology, physiology, neuroscience — tools to grab when needed, not subjects to be studied for their own sake
 - **Stories**, **works**, and **courses** as the three forms of content
 

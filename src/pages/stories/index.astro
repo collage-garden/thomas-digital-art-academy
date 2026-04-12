@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Stories" description="The creative process, documented honestly">
+  <h1>Stories</h1>
+  <p><em>The roots beneath the fruit.</em></p>
+  <p>
+    Not every journey ends with a deliverable work — but every journey is a story.
+    Stories are the creative process itself: the spark, the dead ends, the unexpected turns,
+    the moments of confusion, and the small joys of understanding.
+  </p>
+  <hr />
+  <h2>Active Stories</h2>
+  <ul>
+    <li><a href={`${base}stories/thomas/`}><strong>Thomas</strong></a> — Building the garden itself</li>
+  </ul>
+</BaseLayout>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Home">
@@ -26,25 +27,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section>
     <h2>Garden Paths</h2>
     <div class="paths">
-      <a href="/scenes/everyday-life/" class="path-card">
+      <a href={`${base}scenes/everyday-life/`} class="path-card">
         <span class="path-icon">🌿</span>
         <strong>Everyday Life</strong>
         <span>The art and science hidden in daily routines</span>
       </a>
-      <a href="/scenes/auditory-art/" class="path-card">
+      <a href={`${base}scenes/social-observation/`} class="path-card">
+        <span class="path-icon">🔭</span>
+        <strong>Social Observation</strong>
+        <span>How societies work, how people interact, how cultures evolve</span>
+      </a>
+      <a href={`${base}scenes/auditory-art/`} class="path-card">
         <span class="path-icon">🎵</span>
         <strong>Auditory Art</strong>
         <span>Sound, music, acoustics, and the experience of listening</span>
       </a>
-      <a href="/scenes/visual-art/" class="path-card">
+      <a href={`${base}scenes/visual-art/`} class="path-card">
         <span class="path-icon">🎨</span>
         <strong>Visual Art</strong>
         <span>Image, form, color, space, and the experience of seeing</span>
       </a>
-      <a href="/scenes/social-observation/" class="path-card">
-        <span class="path-icon">🔭</span>
-        <strong>Social Observation</strong>
-        <span>How societies work, how people interact, how cultures evolve</span>
+      <a href={`${base}scenes/interactive-installation/`} class="path-card">
+        <span class="path-icon">🕳️</span>
+        <strong>Interactive Installation</strong>
+        <span>Where technology meets physical space and human participation</span>
+      </a>
+      <a href={`${base}scenes/traditional-art/`} class="path-card">
+        <span class="path-icon">🎭</span>
+        <strong>Traditional Art</strong>
+        <span>Ancient craft through modern eyes</span>
       </a>
     </div>
   </section>
@@ -52,18 +63,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section>
     <h2>Explore</h2>
     <p>
-      <a href="/stories/">Stories</a> — the creative process, documented honestly<br />
-      <a href="/knowledge/">Knowledge</a> — the toolkit, not the curriculum<br />
-      <a href="/works/">Works</a> — things we made with what we learned<br />
-      <a href="/courses/">Courses</a> — curated walks through the garden<br />
-      <a href="/charter/">Charter</a> — the constitution of this garden
+      <a href={`${base}stories/`}>Stories</a> — the creative process, documented honestly<br />
+      <a href={`${base}knowledge/`}>Knowledge</a> — the toolkit, not the curriculum<br />
+      <a href={`${base}works/`}>Works</a> — things we made with what we learned<br />
+      <a href={`${base}courses/`}>Courses</a> — curated walks through the garden<br />
+      <a href={`${base}charter/`}>Charter</a> — the constitution of this garden
     </p>
   </section>
 
   <section>
     <h2>Start Walking</h2>
     <p>
-      Read the <a href="/charter/">Charter</a> first.
+      Read the <a href={`${base}charter/`}>Charter</a> first.
       Then pick any path that interests you. There are no prerequisites, no deadlines, and no wrong turns.
     </p>
   </section>

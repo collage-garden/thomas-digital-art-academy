@@ -22,4 +22,4 @@ You don't come here to "study physics." You come here because you're making some
 
 ---
 
-*These shelves are here to support the four garden paths — [Everyday Life](../scenes/everyday-life/), [Auditory Art](../scenes/auditory-art/), [Visual Art](../scenes/visual-art/), and [Social Observation](../scenes/social-observation/). If you find yourself spending more time here than in the scenes, you might be lost. Go make something.*
+*These shelves are here to support the six garden paths — [Everyday Life](../scenes/everyday-life/), [Social Observation](../scenes/social-observation/), [Auditory Art](../scenes/auditory-art/), [Visual Art](../scenes/visual-art/), [Interactive Installation](../scenes/interactive-installation/), and [Traditional Art](../scenes/traditional-art/). If you find yourself spending more time here than in the scenes, you might be lost. Go make something.*

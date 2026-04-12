@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+
+const scenes = [
+  { slug: 'everyday-life', icon: '🌿', title: 'Everyday Life', desc: 'The art and science hidden in daily routines' },
+  { slug: 'social-observation', icon: '🔭', title: 'Social Observation', desc: 'How societies work, how people interact, how cultures evolve' },
+  { slug: 'auditory-art', icon: '🎵', title: 'Auditory Art', desc: 'Sound, music, acoustics, and the experience of listening' },
+  { slug: 'visual-art', icon: '🎨', title: 'Visual Art', desc: 'Image, form, color, space, and the experience of seeing' },
+  { slug: 'interactive-installation', icon: '🕳️', title: 'Interactive Installation', desc: 'Where technology meets physical space and human participation' },
+  { slug: 'traditional-art', icon: '🎭', title: 'Traditional Art', desc: 'Ancient craft through modern eyes' },
+];
+---
+
+<BaseLayout title="Scenes" description="The six garden paths of Thomas's Digital Art Academy">
+  <h1>Garden Paths</h1>
+  <p>Six intersecting paths through the garden. They cross freely — a project may live at the intersection of two or three scenes.</p>
+
+  <div class="scenes-grid">
+    {scenes.map(s => (
+      <a href={`${base}scenes/${s.slug}/`} class="scene-card">
+        <span class="scene-icon">{s.icon}</span>
+        <strong>{s.title}</strong>
+        <span class="scene-desc">{s.desc}</span>
+      </a>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .scenes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
+  .scene-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .scene-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 2px 8px rgba(45, 106, 79, 0.1);
+  }
+  .scene-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .scene-card strong { font-family: var(--font-heading); margin-bottom: 0.25rem; }
+  .scene-desc { font-size: 0.85rem; color: var(--color-muted); }
+</style>

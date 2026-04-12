@@ -44,9 +44,9 @@ We will learn from and reference others' work extensively. All references must b
 
 The ultimate output of this garden is not reading notes — it is works. A piece of audio, a generated image, an interactive webpage, a 3D model (yes, finally, the teapot). Every learning journey should end with "Here is what we made with what we learned." Notes document the process; works mark the milestones.
 
-### V. Four Scenes, Crossing Paths
+### V. Six Scenes, Crossing Paths
 
-The four scenes — **Everyday Life**, **Auditory Art**, **Visual Art**, and **Social Observation** — are not parallel tracks. They are intersecting garden paths. A project about urban noise can belong to both Auditory Art and Social Observation. Content structure must support cross-referencing across scenes. No piece of knowledge is locked in one drawer.
+The six scenes — **Everyday Life**, **Social Observation**, **Auditory Art**, **Visual Art**, **Interactive Installation**, and **Traditional Art** — are not parallel tracks. They are intersecting garden paths. A project about urban noise can belong to both Auditory Art and Social Observation. An interactive calligraphy installation lives at the crossroads of Interactive Installation and Traditional Art. Content structure must support cross-referencing across scenes. No piece of knowledge is locked in one drawer.
 
 ### VI. Simple Enough for a Curious Freshman
 
@@ -75,16 +75,18 @@ Primary language: **English**. When a topic reaches a complete state (which, per
 
 ### Content Organization
 
-Content is organized by **scenes** (the four garden paths), supported by **knowledge fragments** from various disciplines.
+Content is organized by **scenes** (the six garden paths), supported by **knowledge fragments** from various disciplines.
 
-**Scenes** — the four paths through the garden:
+**Scenes** — the six paths through the garden:
 
 | Scene | What it explores |
 |---|---|
 | **Everyday Life** | The art and science hidden in daily routines |
+| **Social Observation** | How societies work, how people interact, how cultures evolve |
 | **Auditory Art** | Sound, music, acoustics, and the experience of listening |
 | **Visual Art** | Image, form, color, space, and the experience of seeing |
-| **Social Observation** | How societies work, how people interact, how cultures evolve |
+| **Interactive Installation** | Where technology meets physical space and human participation |
+| **Traditional Art** | Ancient craft through modern eyes |
 
 **Knowledge Fragments** — the toolkit, not the curriculum:
 

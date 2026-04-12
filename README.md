@@ -20,12 +20,14 @@ This is not a course platform. This is a living, versioned record of learning: r
 
 ## How This Garden Is Organized
 
-Content grows along four intersecting paths:
+Content grows along six intersecting paths:
 
 🌿 **Everyday Life** — the art and science hidden in daily routines
+🔭 **Social Observation** — how societies work, how people interact, how cultures evolve
 🎵 **Auditory Art** — sound, music, acoustics, and the experience of listening
 🎨 **Visual Art** — image, form, color, space, and the experience of seeing
-🔭 **Social Observation** — how societies work, how people interact, how cultures evolve
+🕳️ **Interactive Installation** — where technology meets physical space and human participation
+🎭 **Traditional Art** — ancient craft through modern eyes
 
 These paths cross freely. A project may live at the intersection of two or three scenes.
 

@@ -92,9 +92,11 @@ draft: false
 
 ### scenes (pick one or more)
 - `everyday-life`
+- `social-observation`
 - `auditory-art`
 - `visual-art`
-- `social-observation`
+- `interactive-installation`
+- `traditional-art`
 
 ### disciplines (pick one or more, or exactly one for knowledge notes)
 - `physics`
