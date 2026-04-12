@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+const loc = `${base}zh-cn/`;
+---
+
+<BaseLayout title="故事" description="创作过程，诚实记录">
+  <h1>故事</h1>
+  <p><em>果实下面的根。</em></p>
+  <p>
+    不是每段旅程都以一件可交付的作品结尾——但每段旅程都是一个故事。
+    故事就是创作过程本身：灵感的火花、走进的死胡同、意想不到的转折、
+    迷惑的瞬间，以及理解降临时的微小喜悦。
+  </p>
+  <hr />
+  <h2>进行中的故事</h2>
+  <ul>
+    <li><a href={`${loc}stories/thomas/`}><strong>Thomas</strong></a> — 建造花园本身</li>
+  </ul>
+</BaseLayout>

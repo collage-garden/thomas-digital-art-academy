@@ -1,35 +1,43 @@
 ---
 import '../styles/global.css';
+import { t, type Locale, languages } from '../i18n/index';
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = "Thomas's Digital Art Academy — The Collage Garden" } = Astro.props;
+const { title, description } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const locale = (Astro.currentLocale || 'en') as Locale;
+const isZh = locale === 'zh-cn';
+const localePath = isZh ? `${base}zh-cn/` : base;
+const switchLocale = isZh ? base : `${base}zh-cn/`;
+const switchLabel = isZh ? 'EN' : '中文';
+const defaultDesc = `${t(locale, 'site.title')} — ${t(locale, 'site.tagline')}`;
 ---
 
 <!doctype html>
-<html lang={Astro.currentLocale || 'en'}>
+<html lang={locale === 'zh-cn' ? 'zh-CN' : locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    <meta name="description" content={description || defaultDesc} />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
-    <title>{title} | The Collage Garden</title>
+    <title>{title} | {t(locale, 'site.tagline')}</title>
   </head>
   <body>
     <header>
       <nav>
-        <a href={base} class="logo">🌿 The Collage Garden</a>
+        <a href={localePath} class="logo">🌿 {t(locale, 'site.tagline')}</a>
         <div class="nav-links">
-          <a href={`${base}scenes/`}>Scenes</a>
-          <a href={`${base}stories/`}>Stories</a>
-          <a href={`${base}knowledge/`}>Knowledge</a>
-          <a href={`${base}works/`}>Works</a>
-          <a href={`${base}courses/`}>Courses</a>
-          <a href={`${base}charter/`}>Charter</a>
+          <a href={`${localePath}scenes/`}>{t(locale, 'nav.scenes')}</a>
+          <a href={`${localePath}stories/`}>{t(locale, 'nav.stories')}</a>
+          <a href={`${localePath}knowledge/`}>{t(locale, 'nav.knowledge')}</a>
+          <a href={`${localePath}works/`}>{t(locale, 'nav.works')}</a>
+          <a href={`${localePath}courses/`}>{t(locale, 'nav.courses')}</a>
+          <a href={`${localePath}charter/`}>{t(locale, 'nav.charter')}</a>
+          <a href={switchLocale} class="lang-switch">{switchLabel}</a>
         </div>
       </nav>
     </header>
@@ -38,9 +46,9 @@ const base = import.meta.env.BASE_URL;
     </main>
     <footer>
       <p>
-        Thomas's Digital Art Academy · The Collage Garden<br />
-        Content: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> ·
-        Code: <a href="https://opensource.org/licenses/MIT">MIT</a>
+        {t(locale, 'site.title')} · {t(locale, 'site.tagline')}<br />
+        {t(locale, 'footer.content_license')} ·
+        {t(locale, 'footer.code_license')}
       </p>
     </footer>
   </body>

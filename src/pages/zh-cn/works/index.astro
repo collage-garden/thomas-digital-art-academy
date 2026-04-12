@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+const loc = `${base}zh-cn/`;
+---
+
+<BaseLayout title="作品" description="用所学做出的东西">
+  <h1>作品</h1>
+  <p><em>花园的果实。</em></p>
+  <p>
+    按照我们的<a href={`${loc}charter/`}>宪章</a>，一件展出的作品不是完成了——它是在<em>进行</em>。
+    作品可以诞生于任何一条场景路径，或多条路径的交汇处。
+  </p>
+  <hr />
+  <p>第一批作品正在路上。这座花园按自己的节奏生长。</p>
+</BaseLayout>

@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+const loc = `${base}zh-cn/`;
+---
+
+<BaseLayout title="首页">
+  <section class="hero">
+    <h1>托马斯数字艺术学园</h1>
+    <p class="tagline"><em>The Collage Garden · 拼贴花园</em></p>
+    <blockquote>
+      我们的教育不是教会学生做对什么，而是教会他们如何最低成本地犯错，如何从不断的犯错中学习并改善自己的作品。
+    </blockquote>
+  </section>
+
+  <section>
+    <h2>这是什么？</h2>
+    <p>
+      一座花园，一个技术人在这里学习创作艺术——并邀请你同行。
+      这不是课程平台。这是一份活着的、有版本的学习记录：
+      粗糙的草稿、走错的路、微小的发现、和进行中的作品。
+      这里的一切都是<em>进行时</em>，永远没有完成时。
+    </p>
+  </section>
+
+  <section>
+    <h2>花园小径</h2>
+    <div class="paths">
+      <a href={`${loc}scenes/everyday-life/`} class="path-card">
+        <span class="path-icon">🌿</span>
+        <strong>日常生活</strong>
+        <span>隐藏在日常中的艺术与科学</span>
+      </a>
+      <a href={`${loc}scenes/social-observation/`} class="path-card">
+        <span class="path-icon">🔭</span>
+        <strong>社会观察</strong>
+        <span>社会如何运转、人如何互动、文化如何演变</span>
+      </a>
+      <a href={`${loc}scenes/auditory-art/`} class="path-card">
+        <span class="path-icon">🎵</span>
+        <strong>听觉艺术</strong>
+        <span>声音、音乐、声学，以及聆听的体验</span>
+      </a>
+      <a href={`${loc}scenes/visual-art/`} class="path-card">
+        <span class="path-icon">🎨</span>
+        <strong>视觉艺术</strong>
+        <span>图像、形态、色彩、空间，以及观看的体验</span>
+      </a>
+      <a href={`${loc}scenes/interactive-installation/`} class="path-card">
+        <span class="path-icon">🕳️</span>
+        <strong>互动装置</strong>
+        <span>技术与物理空间、人的参与相遇的地方</span>
+      </a>
+      <a href={`${loc}scenes/traditional-art/`} class="path-card">
+        <span class="path-icon">🎭</span>
+        <strong>传统艺术</strong>
+        <span>以现代视角重新审视古老技艺</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>探索</h2>
+    <p>
+      <a href={`${loc}stories/`}>故事</a> — 创作过程，诚实记录<br />
+      <a href={`${loc}knowledge/`}>知识</a> — 工具架，不是课表<br />
+      <a href={`${loc}works/`}>作品</a> — 用所学做出的东西<br />
+      <a href={`${loc}courses/`}>课程</a> — 花园里的导览路线<br />
+      <a href={`${loc}charter/`}>宪章</a> — 这座花园的宪法
+    </p>
+  </section>
+
+  <section>
+    <h2>开始漫步</h2>
+    <p>
+      先读<a href={`${loc}charter/`}>宪章</a>。
+      然后选一条你感兴趣的路径。没有前置要求，没有截止日期，也没有走错的路。
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { margin-bottom: 3rem; }
+  .hero h1 { margin-top: 0; }
+  .tagline { color: var(--color-muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+  .paths { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .path-card { display: flex; flex-direction: column; padding: 1.25rem; border: 1px solid var(--color-border); border-radius: 8px; text-decoration: none; color: var(--color-text); transition: border-color 0.2s, box-shadow 0.2s; }
+  .path-card:hover { border-color: var(--color-accent); box-shadow: 0 2px 8px rgba(45, 106, 79, 0.1); }
+  .path-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .path-card strong { font-family: var(--font-heading); margin-bottom: 0.25rem; }
+  .path-card span:last-child { font-size: 0.85rem; color: var(--color-muted); }
+</style>
