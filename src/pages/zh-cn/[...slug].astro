@@ -5,33 +5,44 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export function getStaticPaths() {
-  const pages = [
-    { slug: undefined, file: 'README.zh.md', title: '首页' },
-    { slug: 'charter', file: 'CHARTER-ZH.md', title: '宪章' },
-    { slug: 'scenes', file: 'scenes/README.zh.md', title: '花园小径' },
-    { slug: 'scenes/everyday-life', file: 'scenes/everyday-life/README.zh.md', title: '日常生活' },
-    { slug: 'scenes/social-observation', file: 'scenes/social-observation/README.zh.md', title: '社会观察' },
-    { slug: 'scenes/auditory-art', file: 'scenes/auditory-art/README.zh.md', title: '听觉艺术' },
-    { slug: 'scenes/visual-art', file: 'scenes/visual-art/README.zh.md', title: '视觉艺术' },
-    { slug: 'scenes/interactive-installation', file: 'scenes/interactive-installation/README.zh.md', title: '互动装置' },
-    { slug: 'scenes/traditional-art', file: 'scenes/traditional-art/README.zh.md', title: '传统艺术' },
-    { slug: 'stories', file: 'stories/README.zh.md', title: '故事' },
-    { slug: 'stories/thomas', file: 'stories/thomas/README.zh.md', title: 'Thomas 的故事' },
-    { slug: 'knowledge', file: 'knowledge/README.zh.md', title: '知识' },
-    { slug: 'works', file: 'works/README.zh.md', title: '作品' },
-    { slug: 'courses', file: 'courses/README.zh.md', title: '课程' },
-  ];
-  return pages.map(({ slug, file, title }) => ({
-    params: { slug },
-    props: { file, title },
-  }));
+  const root = process.cwd();
+  const pages: { params: { slug: string | undefined }; props: { file: string } }[] = [];
+  const contentDirs = ['scenes', 'stories', 'knowledge', 'works', 'courses'];
+
+  // Homepage
+  if (fs.existsSync(path.join(root, 'README.zh.md'))) {
+    pages.push({ params: { slug: undefined }, props: { file: 'README.zh.md' } });
+  }
+
+  // Charter
+  if (fs.existsSync(path.join(root, 'CHARTER-ZH.md'))) {
+    pages.push({ params: { slug: 'charter' }, props: { file: 'CHARTER-ZH.md' } });
+  }
+
+  // Recursively scan content directories for README.zh.md
+  function scan(dir: string) {
+    const abs = path.join(root, dir);
+    if (!fs.existsSync(abs)) return;
+    if (fs.existsSync(path.join(abs, 'README.zh.md'))) {
+      pages.push({ params: { slug: dir }, props: { file: `${dir}/README.zh.md` } });
+    }
+    for (const entry of fs.readdirSync(abs, { withFileTypes: true })) {
+      if (entry.isDirectory() && !entry.name.startsWith('.')) {
+        scan(`${dir}/${entry.name}`);
+      }
+    }
+  }
+
+  for (const dir of contentDirs) scan(dir);
+  return pages;
 }
 
-const { file, title } = Astro.props;
+const { file } = Astro.props;
 const raw = fs.readFileSync(path.resolve(file), 'utf-8');
+const titleMatch = raw.match(/^#\s+(.+)$/m);
+const title = titleMatch ? titleMatch[1].replace(/\*.*?\*/g, '').trim() : '页面';
 let html = await marked(raw);
 
-// Rewrite CHARTER .md links to web-friendly paths
 html = html.replace(/href="([^"]*?)CHARTER\.md"/g, 'href="$1charter/"');
 html = html.replace(/href="([^"]*?)CHARTER-ZH\.md"/g, 'href="$1charter/"');
 ---

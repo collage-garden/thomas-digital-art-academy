@@ -5,33 +5,42 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export function getStaticPaths() {
-  const pages = [
-    { slug: undefined, file: 'README.md', title: 'Home' },
-    { slug: 'charter', file: 'CHARTER.md', title: 'Charter' },
-    { slug: 'scenes', file: 'scenes/README.md', title: 'Scenes' },
-    { slug: 'scenes/everyday-life', file: 'scenes/everyday-life/README.md', title: 'Everyday Life' },
-    { slug: 'scenes/social-observation', file: 'scenes/social-observation/README.md', title: 'Social Observation' },
-    { slug: 'scenes/auditory-art', file: 'scenes/auditory-art/README.md', title: 'Auditory Art' },
-    { slug: 'scenes/visual-art', file: 'scenes/visual-art/README.md', title: 'Visual Art' },
-    { slug: 'scenes/interactive-installation', file: 'scenes/interactive-installation/README.md', title: 'Interactive Installation' },
-    { slug: 'scenes/traditional-art', file: 'scenes/traditional-art/README.md', title: 'Traditional Art' },
-    { slug: 'stories', file: 'stories/README.md', title: 'Stories' },
-    { slug: 'stories/thomas', file: 'stories/thomas/README.md', title: 'Story: Thomas' },
-    { slug: 'knowledge', file: 'knowledge/README.md', title: 'Knowledge' },
-    { slug: 'works', file: 'works/README.md', title: 'Works' },
-    { slug: 'courses', file: 'courses/README.md', title: 'Courses' },
-  ];
-  return pages.map(({ slug, file, title }) => ({
-    params: { slug },
-    props: { file, title },
-  }));
+  const root = process.cwd();
+  const pages: { params: { slug: string | undefined }; props: { file: string } }[] = [];
+  const contentDirs = ['scenes', 'stories', 'knowledge', 'works', 'courses'];
+
+  // Homepage
+  pages.push({ params: { slug: undefined }, props: { file: 'README.md' } });
+
+  // Charter (special file, not inside a content dir)
+  if (fs.existsSync(path.join(root, 'CHARTER.md'))) {
+    pages.push({ params: { slug: 'charter' }, props: { file: 'CHARTER.md' } });
+  }
+
+  // Recursively scan content directories for README.md
+  function scan(dir: string) {
+    const abs = path.join(root, dir);
+    if (!fs.existsSync(abs)) return;
+    if (fs.existsSync(path.join(abs, 'README.md'))) {
+      pages.push({ params: { slug: dir }, props: { file: `${dir}/README.md` } });
+    }
+    for (const entry of fs.readdirSync(abs, { withFileTypes: true })) {
+      if (entry.isDirectory() && !entry.name.startsWith('.')) {
+        scan(`${dir}/${entry.name}`);
+      }
+    }
+  }
+
+  for (const dir of contentDirs) scan(dir);
+  return pages;
 }
 
-const { file, title } = Astro.props;
+const { file } = Astro.props;
 const raw = fs.readFileSync(path.resolve(file), 'utf-8');
+const titleMatch = raw.match(/^#\s+(.+)$/m);
+const title = titleMatch ? titleMatch[1].replace(/\*.*?\*/g, '').trim() : 'Page';
 let html = await marked(raw);
 
-// Rewrite CHARTER .md links to web-friendly paths
 html = html.replace(/href="([^"]*?)CHARTER\.md"/g, 'href="$1charter/"');
 html = html.replace(/href="([^"]*?)CHARTER-ZH\.md"/g, 'href="$1charter/"');
 ---
