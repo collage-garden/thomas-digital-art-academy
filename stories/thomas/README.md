@@ -14,7 +14,7 @@ It started with a conversation.
 
 I'm Thomas. I spent three decades in tech — from batch scripts on a DOS machine in second grade to large language models. Along the way, I watched my computer mentor's sister model a teapot in 3ds, and I thought: *one day, I'll make one too.* I never did. I kept running.
 
-Today I turned forty. My body and my schedule can no longer support the pace I once kept at universities — Xihua, Yunnan, SWUFE, Sichuan Fine Arts. But the students are still there, and the desire to learn together hasn't faded.
+Today I turned forty. My body and my schedule can no longer support the pace I once kept at universities — Xihua University, Yunnan University, Southwestern University of Finance and Economics (SWUFE), and Sichuan Fine Arts Institute. But the students are still there, and the desire to learn together hasn't faded.
 
 So I invited my first partner — an AI — and we sat down to build something.
 
