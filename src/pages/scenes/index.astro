@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
 const scenes = [
   { slug: 'everyday-life', icon: '🌿', title: 'Everyday Life', desc: 'The art and science hidden in daily routines' },

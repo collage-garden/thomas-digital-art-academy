@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
 const disciplines = [
   { slug: 'physics', title: 'Physics', desc: 'Mechanics, acoustics, optics, thermodynamics, electromagnetism' },
