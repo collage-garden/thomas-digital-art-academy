@@ -12,5 +12,47 @@ const loc = `${base}zh-cn/`;
     作品可以诞生于任何一条场景路径，或多条路径的交汇处。
   </p>
   <hr />
-  <p>第一批作品正在路上。这座花园按自己的节奏生长。</p>
+  <h2>作品</h2>
+  <div class="works-grid">
+    <a href="https://collage-garden.github.io/binaural-beats/" class="work-card">
+      <span class="work-icon">🎧</span>
+      <strong>双耳拍探索器</strong>
+      <span class="work-meta">场景：听觉艺术 · 互动装置</span>
+      <span class="work-desc">一个交互式双耳拍体验工具。三种音频模式（纯音、音乐频移、持续音），四种频率分配策略，实时波形可视化，PWA离线支持。纯前端零依赖——Web Audio API、AudioWorklet、基于FFT的SSB调制。</span>
+      <span class="work-tags">
+        <span class="tag">web-audio</span>
+        <span class="tag">心理声学</span>
+        <span class="tag">pwa</span>
+        <span class="ai-label">AI协作</span>
+      </span>
+    </a>
+  </div>
 </BaseLayout>
+
+<style>
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .work-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .work-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 2px 8px rgba(45, 106, 79, 0.1);
+  }
+  .work-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .work-card strong { font-family: var(--font-heading); margin-bottom: 0.25rem; }
+  .work-meta { font-size: 0.8rem; color: var(--color-accent); margin-bottom: 0.5rem; }
+  .work-desc { font-size: 0.85rem; color: var(--color-muted); margin-bottom: 0.75rem; }
+  .work-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+</style>
