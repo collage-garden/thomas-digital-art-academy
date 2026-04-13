@@ -106,8 +106,32 @@ export async function renderPage(file: string): Promise<{ title: string; html: s
         .trim()
     : 'Page';
 
-  let html = await marked(raw);
+  // Protect math expressions from marked's backslash escaping.
+  // Extract $$...$$ and $...$ blocks, replace with placeholders,
+  // then restore after markdown rendering.
+  const mathStore: string[] = [];
+  let src = raw;
+  // Display math first ($$...$$)
+  src = src.replace(/\$\$([\s\S]+?)\$\$/g, (_, math) => {
+    const idx = mathStore.length;
+    mathStore.push(`$$${math}$$`);
+    return `%%MATH${idx}%%`;
+  });
+  // Inline math ($...$) — avoid matching $$ or empty $
+  src = src.replace(/\$([^\$\n]+?)\$/g, (_, math) => {
+    const idx = mathStore.length;
+    mathStore.push(`$${math}$`);
+    return `%%MATH${idx}%%`;
+  });
+
+  let html = await marked(src);
   html = rewriteLinks(html);
+
+  // Restore math expressions
+  for (let i = 0; i < mathStore.length; i++) {
+    html = html.replace(`%%MATH${i}%%`, mathStore[i]);
+  }
+
   return { title, html };
 }
 
