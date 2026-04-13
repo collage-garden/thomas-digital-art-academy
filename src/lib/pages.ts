@@ -127,6 +127,15 @@ export async function renderPage(file: string): Promise<{ title: string; html: s
   let html = await marked(src);
   html = rewriteLinks(html);
 
+  // For non-README files, the filename becomes a directory segment in the URL
+  // (e.g. wave-superposition.md → wave-superposition/index.html), adding one
+  // extra level of depth compared to the source file's location on disk.
+  // All relative links must be adjusted by prepending ../ to compensate.
+  const isReadme = coreName(path.basename(file)).toLowerCase() === 'readme';
+  if (!isReadme) {
+    html = html.replace(/href="(?!https?:\/\/|\/|#|mailto:)([^"]+)"/g, 'href="../$1"');
+  }
+
   // Restore math expressions
   for (let i = 0; i < mathStore.length; i++) {
     html = html.replace(`%%MATH${i}%%`, mathStore[i]);
